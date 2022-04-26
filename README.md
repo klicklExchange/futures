@@ -1,6 +1,6 @@
 # Futures API
-https://github.com/klicklExchange/futures/blob/main/docs/futuresAPI.md
-
+https://github.com/klicklExchange/futures/blob/main/docs/futuresAPI_zh.md
+https://github.com/klicklExchange/futures/blob/main/docs/futuresAPI_en.md
 
 ## SIGNED (TRADE and USER_DATA) Endpoint Security
 
