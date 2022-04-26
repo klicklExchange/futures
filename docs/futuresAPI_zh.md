@@ -74,19 +74,16 @@
 |X-APIKEY|apikey|header|true|||
 |X-TIMESTAMP|timestamp|header|true|||
 |X-SIGNATURE|signature|header|true|||
+|X-RECVWINDOW|recvwindow|header|false|||
 |openOrderRequests|openOrderRequest|body|true|array|openOrderRequest|
 |&emsp;&emsp;symbol|合约符号名称||false|string||
 |&emsp;&emsp;side|开单方向 0=多 1=空 【多空方向:多=0,空=1】||false|ContractSide|ContractSide|
 |&emsp;&emsp;price|价格||false|number(decimal)||
-|&emsp;&emsp;type|定单类型 2=强制平仓 3=强制减仓 4=自动减仓 5=市场价 6=限价 7=止损 8=止盈 9=计划单【交易类型:强制平仓=2,强制减仓=3,自动减仓=4,市场价=5,限价=6,止损=7,止盈=8,计划单=9】||false|OrderType|OrderType|
+|&emsp;&emsp;type|定单类型 5=市场价 6=限价 【交易类型:市场价=5,限价=6】||false|OrderType|OrderType|
 |&emsp;&emsp;size|数量||false|number(decimal)||
-|&emsp;&emsp;reduceOnly|仅减少仓位||false|boolean||
-|&emsp;&emsp;ioc|||false|boolean||
-|&emsp;&emsp;postOnly|||false|boolean||
 |&emsp;&emsp;clientId|客户自定义单号||false|string||
 |&emsp;&emsp;unitMode|交易单位模式  0=张 1=币【交易单位模式:张=0,币=1】||false|TradingUnitMode|TradingUnitMode|
 |&emsp;&emsp;marginMode|持仓模式【全仓保证金模式=0,逐仓保证金模式=1】||false|MarginMode|MarginMode|
-|X-RECVWINDOW|recvwindow|header|false|||
 
 
 **响应状态**:
@@ -106,7 +103,7 @@
 |createTime|委托时间|string(date-time)|string(date-time)|
 |contractId||string||
 |customerId|客户Id|string||
-|orderType|交易类型【交易类型:强制平仓=2,强制减仓=3,自动减仓=4,市场价=5,限价=6,止损=7,止盈=8,计划单=9】|OrderType|OrderType|
+|orderType|交易类型【交易类型:市场价=5,限价=6】|OrderType|OrderType|
 |price|委托价|number(decimal)|number(decimal)|
 |totalQty|委托总量|number(decimal)|number(decimal)|
 |cumQty|已成交数量|number(decimal)|number(decimal)|
@@ -201,7 +198,7 @@
 |&emsp;&emsp;side|多空方向 0=多 1=空【多空方向:多=0,空=1】||false|ContractSide|ContractSide|
 |&emsp;&emsp;size|数量||false|number(decimal)||
 |&emsp;&emsp;price|价格||false|number(decimal)||
-|&emsp;&emsp;type|定单类型 2=强制平仓 3=强制减仓 4=自动减仓 5=市场价 6=限价 7=止损 8=止盈 9=计划单【交易类型:强制平仓=2,强制减仓=3,自动减仓=4,市场价=5,限价=6,止损=7,止盈=8,计划单=9】||false|OrderType|OrderType|
+|&emsp;&emsp;type|定单类型 5=市场价 6=限价【交易类型:市场价=5,限价=6】||false|OrderType|OrderType|
 |&emsp;&emsp;clientId|客户自定义单号 ||false|string||
 |&emsp;&emsp;unitMode|交易单位模式  0=张 1=币【交易单位模式:张=0,币=1】||false|TradingUnitMode|TradingUnitMode|
 |&emsp;&emsp;marginMode|持仓模式【全仓保证金模式=0,逐仓保证金模式=1】||false|MarginMode|MarginMode|
@@ -225,7 +222,7 @@
 |createTime|委托时间|string(date-time)|string(date-time)|
 |contractId||string||
 |customerId|客户Id|string||
-|orderType|交易类型【交易类型:强制平仓=2,强制减仓=3,自动减仓=4,市场价=5,限价=6,止损=7,止盈=8,计划单=9】|OrderType|OrderType|
+|orderType|交易类型【交易类型:市场价=5,限价=6】|OrderType|OrderType|
 |price|委托价|number(decimal)|number(decimal)|
 |totalQty|委托总量|number(decimal)|number(decimal)|
 |cumQty|已成交数量|number(decimal)|number(decimal)|
@@ -773,56 +770,6 @@
 ]
 ```
 
-
-## 获取用户信息
-
-
-**接口地址**:`/api/v1/getCustomerInfo`
-
-
-**请求方式**:`POST`
-
-
-**请求数据类型**:`application/x-www-form-urlencoded`
-
-
-**响应数据类型**:`*/*`
-
-
-**接口描述**:
-
-
-**请求参数**:
-
-
-| 参数名称 | 参数说明 | 请求类型    | 是否必须 | 数据类型 | schema |
-| -------- | -------- | ----- | -------- | -------- | ------ |
-|X-APIKEY|apikey|header|true|||
-|X-TIMESTAMP|timestamp|header|true|||
-|X-SIGNATURE|signature|header|true|||
-|X-RECVWINDOW|recvwindow|header|false|||
-
-
-**响应状态**:
-
-
-| 状态码 | 说明 | schema |
-| -------- | -------- | ----- | 
-|200|||
-
-
-**响应参数**:
-
-
-暂无
-
-
-**响应示例**:
-```javascript
-
-```
-
-
 ## 限价市价委托开仓
 
 
@@ -854,12 +801,9 @@
 |Side|多空方向:多=0,空=1|query|false|contractSide|contractSide|
 |&emsp;&emsp;undefined|可用值:0,1||false|integer||
 |Price|价格|query|false|number(decimal)||
-|Type|交易类型:强制平仓=2,强制减仓=3,自动减仓=4,市场价=5,限价=6,止损=7,止盈=8,计划单=9|query|false|orderType|orderType|
+|Type|交易类型:市场价=5,限价=6|query|false|orderType|orderType|
 |&emsp;&emsp;undefined|可用值:2,3,4,5,6,7,8,9||false|integer||
 |Size|数量|query|false|number(decimal)||
-|ReduceOnly|仅减少仓位|query|false|boolean||
-|Ioc||query|false|boolean||
-|PostOnly||query|false|boolean||
 |ClientId|客户自定义单号|query|false|string||
 |UnitMode|交易单位模式:张=0,币=1|query|false|tradingUnitMode|tradingUnitMode|
 |&emsp;&emsp;undefined|可用值:0,1||false|integer||
@@ -884,7 +828,7 @@
 |createTime|委托时间|string(date-time)|string(date-time)|
 |contractId||string||
 |customerId|客户Id|string||
-|orderType|交易类型【交易类型:强制平仓=2,强制减仓=3,自动减仓=4,市场价=5,限价=6,止损=7,止盈=8,计划单=9】|OrderType|OrderType|
+|orderType|交易类型【交易类型:市场价=5,限价=6】|OrderType|OrderType|
 |price|委托价|number(decimal)|number(decimal)|
 |totalQty|委托总量|number(decimal)|number(decimal)|
 |cumQty|已成交数量|number(decimal)|number(decimal)|
@@ -959,7 +903,7 @@
 |&emsp;&emsp;undefined|可用值:0,1||false|integer||
 |Size|数量|query|false|number(decimal)||
 |Price|价格|query|false|number(decimal)||
-|Type|交易类型:强制平仓=2,强制减仓=3,自动减仓=4,市场价=5,限价=6,止损=7,止盈=8,计划单=9|query|false|orderType|orderType|
+|Type|交易类型:市场价=5,限价=6|query|false|orderType|orderType|
 |&emsp;&emsp;undefined|可用值:2,3,4,5,6,7,8,9||false|integer||
 |ClientId|客户自定义单号 |query|false|string||
 |UnitMode|交易单位模式:张=0,币=1|query|false|tradingUnitMode|tradingUnitMode|
@@ -985,7 +929,7 @@
 |createTime|委托时间|string(date-time)|string(date-time)|
 |contractId||string||
 |customerId|客户Id|string||
-|orderType|交易类型【交易类型:强制平仓=2,强制减仓=3,自动减仓=4,市场价=5,限价=6,止损=7,止盈=8,计划单=9】|OrderType|OrderType|
+|orderType|交易类型【交易类型:市场价=5,限价=6】|OrderType|OrderType|
 |price|委托价|number(decimal)|number(decimal)|
 |totalQty|委托总量|number(decimal)|number(decimal)|
 |cumQty|已成交数量|number(decimal)|number(decimal)|
@@ -1308,7 +1252,7 @@
 |createTime|委托时间|string(date-time)|string(date-time)|
 |contractId||string||
 |customerId|客户Id|string||
-|orderType|交易类型【交易类型:强制平仓=2,强制减仓=3,自动减仓=4,市场价=5,限价=6,止损=7,止盈=8,计划单=9】|OrderType|OrderType|
+|orderType|交易类型【交易类型:市场价=5,限价=6】|OrderType|OrderType|
 |price|委托价|number(decimal)|number(decimal)|
 |totalQty|委托总量|number(decimal)|number(decimal)|
 |cumQty|已成交数量|number(decimal)|number(decimal)|
@@ -3504,7 +3448,7 @@ null
 |CoinId|币种|query|false|string||
 |billType|账单类型:换币=1,划转=2,交易=3,强平=4,减仓=5,利息=6,资金费=7|query|false|billType|billType|
 |&emsp;&emsp;undefined|可用值:1,2,3,4,5,6,7||false|integer||
-|pageResultOfBillingRecordView|账单交易类型:买入开多=1,卖出平多=2,卖出开空=3,买入平空=4,强制平多=5,强制平空=6,换币转出=7,换币转入=8,币币到合约=9,合约到币币=10,资金费用支出=11,资金费用收入=12,强制减仓平多=13,强制减仓平空=14,自动减仓平多=15,自动减仓平空=16,利息支出=17,穿仓弥补=18,合约大赛=19,法币到合约=20,合约到法币=21|query|false|billTradeType|billTradeType|
+|pageResultOfBillingRecordView|账单交易类型:买入开多=1,卖出平多=2,卖出开空=3,买入平空=4,强制平多=5,强制平空=6,换币转出=7,换币转入=8,币币到合约=9,合约到币币=10,资金费用支出=11,资金费用收入=12,强制减仓平多=13,强制减仓平空=14,自动减仓平多=15,自动减仓平空=16,利息支出=17,穿仓弥补=18,法币到合约=20,合约到法币=21|query|false|billTradeType|billTradeType|
 |&emsp;&emsp;undefined|可用值:1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21||false|integer||
 |PageIndex|当前页码|query|false|integer(int32)||
 |PageSize|每页行数|query|false|integer(int32)||
@@ -3559,7 +3503,7 @@ null
 |X-RECVWINDOW|recvwindow|header|false|||
 |CoinId|币种Id|query|false|string||
 |BillType|账单类型:换币=1,划转=2,交易=3,强平=4,减仓=5,利息=6,资金费=7|query|false|BillType|BillType|
-|billTradeType|账单交易类型:买入开多=1,卖出平多=2,卖出开空=3,买入平空=4,强制平多=5,强制平空=6,换币转出=7,换币转入=8,币币到合约=9,合约到币币=10,资金费用支出=11,资金费用收入=12,强制减仓平多=13,强制减仓平空=14,自动减仓平多=15,自动减仓平空=16,利息支出=17,穿仓弥补=18,合约大赛=19,法币到合约=20,合约到法币=21|query|false|billTradeType|billTradeType|
+|billTradeType|账单交易类型:买入开多=1,卖出平多=2,卖出开空=3,买入平空=4,强制平多=5,强制平空=6,换币转出=7,换币转入=8,币币到合约=9,合约到币币=10,资金费用支出=11,资金费用收入=12,强制减仓平多=13,强制减仓平空=14,自动减仓平多=15,自动减仓平空=16,利息支出=17,穿仓弥补=18,法币到合约=20,合约到法币=21|query|false|billTradeType|billTradeType|
 |&emsp;&emsp;undefined|可用值:1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21||false|integer||
 |ContractId|合约Id|query|false|string||
 |StartTime|查询开始时间|query|false|string(date-time)||
