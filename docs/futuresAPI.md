@@ -1,10 +1,10 @@
-# IDCM Futures platform
+# IDCM Futures Api
 
 
-**简介**:IDCM Futures platform
+**简介**:IDCM Futures Api
 
 
-**HOST**:http://localhost
+**HOST**:https://ctapi.klickl.com/
 
 
 **联系人**:
@@ -23,7 +23,7 @@
 
 
 
-# default
+# futures api
 
 
 ## 批量限价市价委托开仓
