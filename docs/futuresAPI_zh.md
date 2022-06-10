@@ -797,15 +797,15 @@
 |X-TIMESTAMP|timestamp|header|true|||
 |X-SIGNATURE|signature|header|true|||
 |X-RECVWINDOW|recvwindow|header|false|||
-|Symbol|合约符号名称|query|false|string||
-|Side|多空方向:多=0,空=1|query|false|contractSide|contractSide|
+|symbol|合约符号名称|query|false|string||
+|side|多空方向:多=0,空=1|query|false|contractSide|contractSide|
 |&emsp;&emsp;undefined|可用值:0,1||false|integer||
-|Price|价格|query|false|number(decimal)||
-|Type|交易类型:市场价=5,限价=6|query|false|orderType|orderType|
+|price|价格|query|false|number(decimal)||
+|type|交易类型:市场价=5,限价=6|query|false|orderType|orderType|
 |&emsp;&emsp;undefined|可用值:2,3,4,5,6,7,8,9||false|integer||
 |Size|数量|query|false|number(decimal)||
-|ClientId|客户自定义单号|query|false|string||
-|UnitMode|交易单位模式:张=0,币=1|query|false|tradingUnitMode|tradingUnitMode|
+|clientId|客户自定义单号|query|false|string||
+|unitMode|交易单位模式:张=0,币=1|query|false|tradingUnitMode|tradingUnitMode|
 |&emsp;&emsp;undefined|可用值:0,1||false|integer||
 |marginMode|全仓保证金模式=0,逐仓保证金模式=1|query|false|marginMode|marginMode|
 |&emsp;&emsp;undefined|可用值:0,1||false|integer||
@@ -1832,16 +1832,16 @@
 |X-TIMESTAMP|timestamp|header|true|||
 |X-SIGNATURE|signature|header|true|||
 |X-RECVWINDOW|recvwindow|header|false|||
-|Symbol|合约符号名称|query|false|string||
-|ClientId|自定义单号|query|false|string||
-|TrustPrice|委托价格 空为市价\n |query|false|number(decimal)||
-|TriggerPrice|触发价格|query|false|number(decimal)||
+|symbol|合约符号名称|query|false|string||
+|clientId|自定义单号|query|false|string||
+|trustPrice|委托价格 空为市价\n |query|false|number(decimal)||
+|triggerPrice|触发价格|query|false|number(decimal)||
 |TrustQty|委托数量|query|false|number(decimal)||
-|Side|开多仓=0,开空仓=1,平空仓=2,平多仓=3|query|false|contractTradeSide|contractTradeSide|
+|side|开多仓=0,开空仓=1,平空仓=2,平多仓=3|query|false|contractTradeSide|contractTradeSide|
 |&emsp;&emsp;undefined|可用值:0,1,2,3||false|integer||
-|TriggerPriceKind|K线价格源类型:市场=0,标记=1,Index=2|query|false|kLineType|kLineType|
+|triggerPriceKind|K线价格源类型:市场=0,标记=1,Index=2|query|false|kLineType|kLineType|
 |&emsp;&emsp;undefined|可用值:0,1,2||false|integer||
-|UnitMode|交易单位模式:张=0,币=1|query|false|tradingUnitMode|tradingUnitMode|
+|unitMode|交易单位模式:张=0,币=1|query|false|tradingUnitMode|tradingUnitMode|
 |&emsp;&emsp;undefined|可用值:0,1||false|integer||
 |marginMode|全仓保证金模式=0,逐仓保证金模式=1|query|false|marginMode|marginMode|
 |&emsp;&emsp;undefined|可用值:0,1||false|integer||
