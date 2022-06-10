@@ -793,15 +793,15 @@
 |X-TIMESTAMP|timestamp|header|true|||
 |X-SIGNATURE|signature|header|true|||
 |X-RECVWINDOW|recvwindow|header|false|||
-|Symbol|Symbol Name|query|false|string||
-|Side|Long/short direction:Long=0,short=1|query|false|contractSide|contractSide|
+|symbol|Symbol Name|query|false|string||
+|side|Long/short direction:Long=0,short=1|query|false|contractSide|contractSide|
 |&emsp;&emsp;undefined|Available values:0,1||false|integer||
-|Price|price|query|false|number(decimal)||
-|Type|Transaction Type:Market price=5,Limit price=6|query|false|orderType|orderType|
+|price|price|query|false|number(decimal)||
+|type|Transaction Type:Market price=5,Limit price=6|query|false|orderType|orderType|
 |&emsp;&emsp;undefined|Available values:2,3,4,5,6,7,8,9||false|integer||
-|Size|Quantity|query|false|number(decimal)|| 
-|ClientId|Customized by customerSingle No.|query|false|string||
-|UnitMode|Trading unit mode: cont=0,coin=1|query|false|tradingUnitMode|tradingUnitMode|
+|size|Quantity|query|false|number(decimal)|| 
+|clientId|Customized by customerSingle No.|query|false|string||
+|unitMode|Trading unit mode: cont=0,coin=1|query|false|tradingUnitMode|tradingUnitMode|
 |&emsp;&emsp;undefined|Available values:0,1||false|integer||
 |marginMode|Full margin mode=0,Position by position margin mode=1|query|false|marginMode|marginMode|
 |&emsp;&emsp;undefined|Available values:0,1||false|integer||
